@@ -18,7 +18,7 @@ class Game {
     createPhrases() {
         const phrases = [
             new Phrase('May your coffee be strong'),
-            new Phrase('Life is like a box of chocolates'),
+            new Phrase('You are a Rockstar'),
             new Phrase('More Javascript'),
             new Phrase('Eat more food'),
             new Phrase('You are cool')];
@@ -102,18 +102,28 @@ class Game {
         /**
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
+    * 
+    * gameOver(): this method displays the original start screen overlay, 
+    * and depending on the outcome of the game, updates the overlay h1 
+    * element with a friendly win or loss message, and replaces the overlay’s 
+    * start CSS class with either the win or lose CSS class.
+    * 
     */
     gameOver(gameWon) {
         console.log('pizza');
         console.log(gameWon);
 
         const gameOverMessage = document.getElementById('game-over-message');
-        const showOverlay = document.getElementById('overlay').style.display = 'block';
+        const showOverlay = document.getElementById('overlay');
+        showOverlay.style.display = 'block';
         
         if(gameWon){
             gameOverMessage.innerHTML = 'You Won. Congratulations!';
+            showOverlay.className = 'win';
         } else {
             gameOverMessage.innerHTML = 'Better luck next time.';
+            showOverlay.className = 'lose';
+            
         }
     };
 }

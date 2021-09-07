@@ -15,13 +15,16 @@ class Phrase{
         //Get ul element for the class with the id "phrase"
         const phraseFirstElement = document.getElementById('phrase').firstElementChild;
         const phrase = this.phrase;
+        console.log(phrase.length);
 
 
         //In the for loop, grab the first letter of the phrase and create a seperate li element for each letter
         // next steps add class name to letter and space using example phrase html
-        for(let i=0; i < this.phrase.length; i++ ){
+        for(let i=0; i < phrase.length; i++ ){
+            console.log(phrase.length);
             const liCharacterElement = document.createElement('LI');
             const letter = this.phrase.charAt(i);
+
             liCharacterElement.innerHTML = letter;
             
             if(letter !== ' '){
