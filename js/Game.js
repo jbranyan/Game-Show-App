@@ -110,8 +110,6 @@ class Game {
     * 
     */
     gameOver(gameWon) {
-        console.log('pizza');
-        console.log(gameWon);
 
         const gameOverMessage = document.getElementById('game-over-message');
         const showOverlay = document.getElementById('overlay');

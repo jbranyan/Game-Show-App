@@ -10,15 +10,17 @@ const startButton = document.getElementById('btn__reset');
 const qwertyElement = document.getElementById('qwerty');
 const qwertyKeys = document.querySelectorAll('#qwerty button');
 const heartLi = document.querySelectorAll('#scoreboard li');
+const keys = document.getElementsByClassName('key');
 
 startButton.addEventListener('click',() => {
     game = new Game();
     const ul = document.getElementsByTagName('ul')[0];
     const listItems = ul.getElementsByTagName('li');
 
-    for (let i = 0; i < listItems.length; i++) {
-        console.log (listItems[i]);
-        ul.removeChild(listItems[i]);
+    //https://stackoverflow.com/questions/18795028/javascript-remove-li-without-removing-ul
+    for (let i = 0; li = listItems[i]; i++) {
+        li.parentNode.removeChild(li);
+        i = i - 1;
     }
 
     game.startGame();
@@ -43,5 +45,14 @@ qwerty.addEventListener('click',(e) => {
     const button = e.target;
     if(e.target.className === 'key'){
         game.handleInteraction(button);
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    for (let i = 0; i < keys.length; i++) {
+        if(keys[i].innerHTML === e.key){
+            const button = keys[i];
+            game.handleInteraction(button);
+        }
     }
 });
