@@ -4,9 +4,9 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
-  --color-start: #5b85b7;
+  --color-win: #27a8d3;
+  --color-lose: #d895cd;
+  --color-start: #1765c4;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
@@ -180,7 +180,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #1765c4;
 }
 
 .start a {
@@ -189,6 +189,7 @@ button {
 
 .win {
   background-color: var(--color-win);
+  animation: pulse 5s infinite;
 }
 
 .win a {
@@ -196,7 +197,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #d895cd;
 }
 
 .lose a {

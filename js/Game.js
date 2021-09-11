@@ -45,7 +45,6 @@ class Game {
     }
         
     handleInteraction(button){
-        console.log(button);
         button.disabled = true;
         const buttonInnerHTML = button.innerHTML;
         const matchedLetter = this.activePhrase.checkLetter(buttonInnerHTML);
@@ -55,12 +54,9 @@ class Game {
             button.className = `wrong`;
         } else{
             button.className = `chosen`;
-            console.log(button.className);
             this.activePhrase.showMatchedLetter(buttonInnerHTML);
             const gameWon = this.checkForWin();
-            console.log(gameWon);
             if(gameWon){
-                //pass gameWon variable?
                 this.gameOver(true);
             }
         }
@@ -68,19 +64,19 @@ class Game {
 
     /**
     * Checks for winning move
-    * @return {boolean} True if game has been won, false if game wasn't
-    won
+    * @return {boolean} True if game has been won, false if game wasn't won
     */
     checkForWin() {
-        //Update background color
         //Get ul element for the class with the id "phrase"
         const phraseElement = document.querySelectorAll('#phrase li.hide');
+
+        //Initialize gameWon to false
         let gameWon = false;
 
+        //Verify if the user won the game. If they won, set gameWon to true
         if(phraseElement.length === 0 ){
             gameWon = true;
         }
-        console.log(gameWon);
         return gameWon;
     }
 
@@ -88,8 +84,7 @@ class Game {
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
-    console.log(this.missed);
-    const tries = document.querySelectorAll('#scoreboard li');
+        const tries = document.querySelectorAll('#scoreboard li');
 
         if(this.missed === 4){
             this.gameOver(false);
@@ -99,14 +94,9 @@ class Game {
         }
     };
 
-        /**
+    /**
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
-    * 
-    * gameOver(): this method displays the original start screen overlay, 
-    * and depending on the outcome of the game, updates the overlay h1 
-    * element with a friendly win or loss message, and replaces the overlay’s 
-    * start CSS class with either the win or lose CSS class.
     * 
     */
     gameOver(gameWon) {
@@ -120,8 +110,7 @@ class Game {
             showOverlay.className = 'win';
         } else {
             gameOverMessage.innerHTML = 'Better luck next time.';
-            showOverlay.className = 'lose';
-            
+            showOverlay.className = 'lose'; 
         }
     };
 }

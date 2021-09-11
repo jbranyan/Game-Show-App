@@ -9,11 +9,12 @@ let game;
 const startButton = document.getElementById('btn__reset');
 const qwertyElement = document.getElementById('qwerty');
 const qwertyKeys = document.querySelectorAll('#qwerty button');
-const heartLi = document.querySelectorAll('#scoreboard li');
-const keys = document.getElementsByClassName('key');
+const heartImage = document.querySelectorAll('#scoreboard li');
 
 startButton.addEventListener('click',() => {
+    //Create a new game
     game = new Game();
+
     const ul = document.getElementsByTagName('ul')[0];
     const listItems = ul.getElementsByTagName('li');
 
@@ -23,19 +24,22 @@ startButton.addEventListener('click',() => {
         i = i - 1;
     }
 
+    //start a new game
     game.startGame();
 
-    for (let i = 0; i < qwertyKeys.length; i++) {
-        qwertyKeys[i].className = `key`;
-        qwertyKeys[i].disabled = false;   
-    }
+    //For the new game, reset the keyboard by enabling all keyboard buttons
+    qwertyKeys.forEach(qwertyKey => {
+        qwertyKey.className = `key`;
+        qwertyKey.disabled = false;
+    });
 
-    for (let i = 0; i < heartLi.length; i++) {
-        heartLi[i].innerHTML = `<img src="images/liveHeart.png" alt="Heart Icon" height=\"35\" width=\"30\">`;
-    }
+    //For the new game, reset the lost heart image to the live heart
+    heartImage.forEach(heart => {
+        heart.innerHTML = `<img src="images/liveHeart.png" alt="Heart Icon" height=\"35\" width=\"30\">`;
+    });
 });
 
-
+//
 qwertyElement.addEventListener('click',(e) => {
     const letter = e.target;
 });
@@ -48,11 +52,12 @@ qwerty.addEventListener('click',(e) => {
     }
 });
 
+//Captures the key pressed by the user and passed it to handleInteraction
 document.addEventListener('keyup', (e) => {
-    for (let i = 0; i < keys.length; i++) {
-        if(keys[i].innerHTML === e.key){
-            const button = keys[i];
+    qwertyKeys.forEach(qwertyKey => {
+        if(qwertyKey.innerHTML === e.key){
+            const button = qwertyKey;
             game.handleInteraction(button);
         }
-    }
+    })
 });
