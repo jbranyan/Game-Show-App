@@ -15,14 +15,9 @@ startButton.addEventListener('click',() => {
     //Create a new game
     game = new Game();
 
+    //reset the li elements with in the phase ul
     const ul = document.getElementsByTagName('ul')[0];
-    const listItems = ul.getElementsByTagName('li');
-
-    //https://stackoverflow.com/questions/18795028/javascript-remove-li-without-removing-ul
-    for (let i = 0; li = listItems[i]; i++) {
-        li.parentNode.removeChild(li);
-        i = i - 1;
-    }
+    ul.innerHTML = '';
 
     //start a new game
     game.startGame();

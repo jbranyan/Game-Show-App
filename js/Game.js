@@ -67,7 +67,6 @@ class Game {
     * @return {boolean} True if game has been won, false if game wasn't won
     */
     checkForWin() {
-        //Get ul element for the class with the id "phrase"
         const phraseElement = document.querySelectorAll('#phrase li.hide');
 
         //Initialize gameWon to false
@@ -85,7 +84,8 @@ class Game {
     */
     removeLife() {
         const tries = document.querySelectorAll('#scoreboard li');
-
+        //If the user incorrectly guessed 5 times, the game is over. If not, 
+        //set the lives heart to lose a life image.
         if(this.missed === 4){
             this.gameOver(false);
         } else {
@@ -100,11 +100,11 @@ class Game {
     * 
     */
     gameOver(gameWon) {
-
         const gameOverMessage = document.getElementById('game-over-message');
         const showOverlay = document.getElementById('overlay');
         showOverlay.style.display = 'block';
         
+        //User won the game, display the win screen. If not, the lose screen displays.
         if(gameWon){
             gameOverMessage.innerHTML = 'You Won. Congratulations!';
             showOverlay.className = 'win';
