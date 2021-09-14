@@ -18,7 +18,7 @@ class Game {
     createPhrases() {
         const phrases = [
             new Phrase('May your coffee be strong'),
-            new Phrase('You are a Rockstar'),
+            new Phrase('Keep Going'),
             new Phrase('More Javascript'),
             new Phrase('Eat more food'),
             new Phrase('You are cool')];
